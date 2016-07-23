@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infor.BookStore.Connectors", "Infor.BookStore.Connectors\Infor.BookStore.Connectors.csproj", "{74F77547-205E-4E41-A569-3C2509128418}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infor.BookStore.Data", "Infor.BookStore.Data\Infor.BookStore.Data.csproj", "{33F3641D-1F8C-471A-A1CD-6DE734FE4C7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +30,14 @@ Global
 		{D725EA17-3772-499D-B957-638E8AA4DF70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D725EA17-3772-499D-B957-638E8AA4DF70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D725EA17-3772-499D-B957-638E8AA4DF70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74F77547-205E-4E41-A569-3C2509128418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74F77547-205E-4E41-A569-3C2509128418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74F77547-205E-4E41-A569-3C2509128418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74F77547-205E-4E41-A569-3C2509128418}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33F3641D-1F8C-471A-A1CD-6DE734FE4C7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33F3641D-1F8C-471A-A1CD-6DE734FE4C7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33F3641D-1F8C-471A-A1CD-6DE734FE4C7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33F3641D-1F8C-471A-A1CD-6DE734FE4C7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
