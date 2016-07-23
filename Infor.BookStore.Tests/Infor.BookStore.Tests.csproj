@@ -83,7 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="ConnectorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -92,9 +92,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Infor.BookStore.Web\Infor.BookStore.Web.csproj">
-      <Project>{4425E712-47A0-45E0-B98B-DF7A4D1276A7}</Project>
-      <Name>Infor.BookStore.Web</Name>
+    <ProjectReference Include="..\Infor.BookStore.Connectors\Infor.BookStore.Connectors.csproj">
+      <Project>{74f77547-205e-4e41-a569-3c2509128418}</Project>
+      <Name>Infor.BookStore.Connectors</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infor.BookStore.Data\Infor.BookStore.Data.csproj">
+      <Project>{33f3641d-1f8c-471a-a1cd-6de734fe4c7b}</Project>
+      <Name>Infor.BookStore.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -29,20 +29,31 @@ namespace Infor.BookStore.Connectors
 
             if (!string.IsNullOrWhiteSpace(sourceContent))
             {
-                var lines = sourceContent.Split(new [] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
+                var lines = sourceContent.Split(new [] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                lines.RemoveAt(0); // Ignore first line
 
                 foreach (var line in lines)
                 {
+                    //if (line.Length != format.Fields.Sum(f => f.Length))
+                    //{
+                    //    throw new InvalidOperationException("Lines are not of uniform lengths");                        
+                    //}
+
                     var cursor = 0;
                     var book = new Book();
 
                     foreach (var field in format.Fields)
                     {
-                        var fieldValue = line.Substring(cursor, field.Length);
+                        var length = Math.Min(field.Length, line.Length - cursor);
+                        var fieldValue = line.Substring(cursor, length);
 
                         cursor += field.Length;
 
+                        book.SetImportFieldValue(field.Name, fieldValue);
                     }
+
+                    books.Add(book);
                 }
             }
 
@@ -67,7 +78,7 @@ namespace Infor.BookStore.Connectors
                                 .Any(
                                     a =>
                                         (a is ImportFieldAttribute) &&
-                                        ((ImportFieldAttribute) a).Name.ToLower() == importFieldName));
+                                        ((ImportFieldAttribute)a).Name.Equals(importFieldName, StringComparison.CurrentCultureIgnoreCase)));
 
             if (property != null)
             {
