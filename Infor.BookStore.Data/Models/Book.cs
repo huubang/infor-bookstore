@@ -4,6 +4,7 @@ namespace Infor.BookStore.Data.Models
 {
     public partial class Book
     {
+        public int BookId { get; set; }
         [ImportField("Name")]
         public string Name { get; set; }
 
