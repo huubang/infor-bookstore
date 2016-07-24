@@ -11,7 +11,7 @@ namespace Infor.BookStore.Connectors
 {
     public class BookFileParser : IBookParser
     {
-        private string sourceContent = string.Empty;
+        private readonly string sourceContent;
 
         public BookFileParser(string path)
         {
@@ -23,7 +23,7 @@ namespace Infor.BookStore.Connectors
             sourceContent = System.IO.File.ReadAllText(path);
         }
 
-        public IList<Book> Parse(BookFormat format)
+        public IList<Book> Parse(BookFormat format, ParseOptions options)
         {
             var books = new List<Book>();
 
@@ -31,14 +31,22 @@ namespace Infor.BookStore.Connectors
             {
                 var lines = sourceContent.Split(new [] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries).ToList();
 
+                if (lines[0] != format.Name[0].ToString())
+                {
+                    throw new InvalidOperationException("Invalid format");
+                }
+
                 lines.RemoveAt(0); // Ignore first line
 
                 foreach (var line in lines)
-                {
-                    //if (line.Length != format.Fields.Sum(f => f.Length))
-                    //{
-                    //    throw new InvalidOperationException("Lines are not of uniform lengths");                        
-                    //}
+                {                    
+                    if (line.Length != format.Fields.Sum(f => f.Length))
+                    {
+                        if (!options.HasFlag(ParseOptions.SkipUniformLengthCheck))
+                        {
+                            throw new InvalidOperationException("Lines are not of uniform lengths");
+                        }
+                    }
 
                     var cursor = 0;
                     var book = new Book();
@@ -46,7 +54,13 @@ namespace Infor.BookStore.Connectors
                     foreach (var field in format.Fields)
                     {
                         var length = Math.Min(field.Length, line.Length - cursor);
+
                         var fieldValue = line.Substring(cursor, length);
+
+                        if (options.HasFlag(ParseOptions.TrimValue))
+                        {
+                            fieldValue = fieldValue.Trim();
+                        }
 
                         cursor += field.Length;
 
@@ -61,12 +75,13 @@ namespace Infor.BookStore.Connectors
         }
     }
 
+    // Since the interface is simple, I put it here for easy reference instead of in a separate file
     public interface IBookParser
     {
-        IList<Book> Parse(BookFormat format);
+        IList<Book> Parse(BookFormat format, ParseOptions options = ParseOptions.None);
     }
 
-    public static class BookExtension
+    internal static class BookExtension
     {
         public static void SetImportFieldValue(this Book book, string importFieldName, object value)
         {
