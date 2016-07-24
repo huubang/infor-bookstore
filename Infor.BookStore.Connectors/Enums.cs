@@ -11,7 +11,6 @@ namespace Infor.BookStore.Connectors
     {
         None = 0,
         TrimValue = 1,
-        SkipUniformLengthCheck = 2,
-        SkipEmptyLines = 4
+        SkipUniformLengthCheck = 2
     }
 }
