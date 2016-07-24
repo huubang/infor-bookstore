@@ -2,7 +2,7 @@
 
 namespace Infor.BookStore.Data.Models
 {
-    public partial class Book
+    public partial class Book : EntityBase
     {
         public int BookId { get; set; }
         [ImportField("Name")]

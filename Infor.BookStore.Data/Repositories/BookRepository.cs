@@ -14,7 +14,7 @@ namespace Infor.BookStore.Data.Repositories
         }
     }
 
-    public interface IReminderTemplateRepository : IRepository<Book>
+    public interface IBookRepository : IRepository<Book>
     {
         
     }
