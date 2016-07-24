@@ -247,6 +247,20 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infor.BookStore.Business\Infor.BookStore.Business.csproj">
+      <Project>{6040966D-AD20-4A93-BFAC-1456F7239C73}</Project>
+      <Name>Infor.BookStore.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infor.BookStore.Connectors\Infor.BookStore.Connectors.csproj">
+      <Project>{74F77547-205E-4E41-A569-3C2509128418}</Project>
+      <Name>Infor.BookStore.Connectors</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infor.BookStore.Data\Infor.BookStore.Data.csproj">
+      <Project>{33F3641D-1F8C-471A-A1CD-6DE734FE4C7B}</Project>
+      <Name>Infor.BookStore.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

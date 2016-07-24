@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -13,14 +14,22 @@ namespace Infor.BookStore.Connectors
     {
         private readonly string sourceContent;
 
+        public BookFileParser(Stream fileStream)
+        {
+            using (var reader = new StreamReader(fileStream))
+            {
+                sourceContent = reader.ReadToEnd();
+            }
+        }
+
         public BookFileParser(string path)
         {
-            if (!System.IO.File.Exists(path))
+            if (!File.Exists(path))
             {
                 throw new InvalidOperationException(string.Format("File {0} not found.", path));
             }
 
-            sourceContent = System.IO.File.ReadAllText(path);
+            sourceContent = File.ReadAllText(path);
         }
 
         public IList<Book> Parse(BookFormat format, ParseOptions options)

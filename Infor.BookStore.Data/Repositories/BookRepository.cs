@@ -7,7 +7,7 @@ using Infor.BookStore.Data.Models;
 
 namespace Infor.BookStore.Data.Repositories
 {
-    public class BookRepository : Repository<Book>
+    public class BookRepository : Repository<Book>, IBookRepository
     {
         public BookRepository(BSContext dbContext) : base(dbContext)
         {

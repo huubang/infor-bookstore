@@ -95,6 +95,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
+    <Content Include="ImportFiles\A.TXT" />
+    <Content Include="ImportFiles\B.TXT" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
